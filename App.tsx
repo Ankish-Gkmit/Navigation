@@ -1,4 +1,5 @@
 import React from 'react';
+// import 'react-native-gesture-handler';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -17,7 +18,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {Routes} from './src/config/Routes'
+import {Routes} from 'config/Routes'
 
 type SectionProps = PropsWithChildren<{
   title: string;

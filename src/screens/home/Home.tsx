@@ -1,5 +1,5 @@
 import React from "react";
-import { Homedrawerroute, Homebottomroute } from "../../config/Routes";
+import { Homedrawerroute, Homebottomroute } from 'config/Routes';
 import { Text, View } from "react-native";
 
 

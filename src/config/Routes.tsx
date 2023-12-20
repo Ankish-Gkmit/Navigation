@@ -2,12 +2,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Login from "../screens/login/Login";
+import Login from "screens/login/Login";
 import React from "react";
-import  {Home, Homeroot, Homemain } from "../screens/home/Home";
-import Profile from "../screens/profile/Profile";
-import Notification from "../screens/notification/Notification";
-import Setting from "../screens/setting/Setting";
+import  {Home, Homeroot, Homemain } from "screens/home/Home";
+import Profile from "screens/profile/Profile";
+import Notification from "screens/notification/Notification";
+import Setting from "screens/setting/Setting";
 
 const Routes =()=>{
     const Stack = createStackNavigator();

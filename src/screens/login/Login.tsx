@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, View } from "react-native";
-import Input from "../../components/input/Input";
-import Buttons from "../../components/button";
+import Input from "components/input/Input";
+import Buttons from "components/button";
 import styles from './styles'
 
 

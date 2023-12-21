@@ -18,8 +18,11 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import {Routes} from 'config/Routes'
 
+const queryClient = new QueryClient();
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -59,7 +62,10 @@ function App(): React.JSX.Element {
 
   return (
     <>
+    <QueryClientProvider client={queryClient}>
+
         <Routes/>
+    </QueryClientProvider>
     </>
   );
 }

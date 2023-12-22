@@ -47,7 +47,8 @@ module.exports = {
            "components" : "./src/components",
            "screens": './src/screens',
            "config" : './src/config',
-           "assets" : './src/assets'
+           "assets" : './src/assets',
+           "hooks" : './src/hooks'
         }
       }
     ],[

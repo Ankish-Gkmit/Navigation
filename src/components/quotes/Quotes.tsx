@@ -4,6 +4,8 @@ import {  useQuery  } from "@tanstack/react-query";
 import { SafeAreaView, Text, View } from "react-native";
 import SelectDropdown , {SelectDropdownProps} from "react-native-select-dropdown";
 import {styles} from './styles';
+import { UseQuoteQuery } from "hooks/UseQuotes";
+
 
 const Quotes= ()=>{
 
@@ -28,45 +30,46 @@ const Allcategories = [
 'success'
 ]
 
-async function fetchdata(currcategory ="money"){
+// async function fetchdata(currcategory ="money"){
 
-    const tempdata = await axios.get(`https://api.api-ninjas.com/v1/quotes?category=${currcategory}`,{
-        headers: {
-            'X-Api-Key' : 'WRq5q+enHOz0STdFsCvgXg==9RHr2HQ7qoTKroWz'
-        }}). 
-        then((response)=> {return response.data})
-        .catch((error)=>{   console.log(error)});
+//     const tempdata = await axios.get(`https://api.api-ninjas.com/v1/quotes?category=${currcategory}`,{
+//         headers: {
+//             'X-Api-Key' : 'WRq5q+enHOz0STdFsCvgXg==9RHr2HQ7qoTKroWz'
+//         }}). 
+//         then((response)=> {return response.data})
+//         .catch((error)=>{   console.log(error)});
 
-        console.log("Fecthed data");
+//         console.log("Fecthed data");
 
-    return  tempdata;
-}
+//     return  tempdata;
+// }
 
 
 
-const handelonchange = (currcategory:string )=>{ 
-    console.log('handleonchange')
-    return(
-        useQuery ({
-            queryKey: ["Quote", {currcategory}],
-            queryFn : async()=> await fetchdata(currcategory),
-        })
-    )
-}
+// const handelonchange = (currcategory:string )=>{ 
+//     console.log('handleonchange')
+//     return(
+//         useQuery ({
+//             queryKey: ["Quote"],
+//             queryFn : async()=> await fetchdata(currcategory),
+//         })
+//     )
+// }
 
 const Props = {
     data: Allcategories,
     onSelect(selectedItem, index) {
         setcurrcategory(selectedItem);
+        refetch(selectedItem);
         console.log(selectedItem,index)
     },
     defaultValue:'money'
 } as SelectDropdownProps;
 
 
-const {data ,isLoading , isError} = handelonchange(currcategory)
-console.log(data)
+const {data ,isLoading , refetch,isError} = UseQuoteQuery(currcategory)
 
+console.log(data);
 
 if(isError)
 {
@@ -88,7 +91,7 @@ return(
             {
                 isLoading ? 
                 <Text>
-                    Featching...
+                    Fetching...
                 </Text>
                 :
                 <View>
@@ -96,9 +99,9 @@ return(
                 <Text style={styles.author}>
                     {data && data[0].author}
                 </Text>
-            <Text  style={styles.quote} >     
-                {data && data[0].quote}
-            </Text>
+                <Text  style={styles.quote} >     
+                    {data && data[0].quote}
+                </Text>
              </View>
             }
     </View>
